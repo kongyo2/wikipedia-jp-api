@@ -1,0 +1,5 @@
+{
+  "name": "@kongyo2/wikipedia-jp-api",
+  "version": "1.0.0",
+  "exports": "./mod.ts"
+}

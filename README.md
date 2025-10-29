@@ -14,16 +14,16 @@
 
 ```bash
 # Denoの場合
-deno add @your-username/wikipedia-jp-api
+deno add @kongyo2/wikipedia-jp-api
 
 # npmの場合
-npx jsr add @your-username/wikipedia-jp-api
+npx jsr add @kongyo2/wikipedia-jp-api
 
 # pnpmの場合
-pnpm add jsr:@your-username/wikipedia-jp-api
+pnpm add jsr:@kongyo2/wikipedia-jp-api
 
 # yarnの場合
-yarn add jsr:@your-username/wikipedia-jp-api
+yarn add jsr:@kongyo2/wikipedia-jp-api
 ```
 
 ## 基本的な使用方法
@@ -31,7 +31,7 @@ yarn add jsr:@your-username/wikipedia-jp-api
 ### 低レベルAPI呼び出し
 
 ```typescript
-import { callWikipediaApi } from "@your-username/wikipedia-jp-api";
+import { callWikipediaApi } from "@kongyo2/wikipedia-jp-api";
 
 // ページ情報を取得
 const result = await callWikipediaApi({
@@ -46,7 +46,7 @@ console.log(result.parse?.title); // "日本"
 ### ページ情報の取得
 
 ```typescript
-import { getPage } from "@your-username/wikipedia-jp-api";
+import { getPage } from "@kongyo2/wikipedia-jp-api";
 
 const page = await getPage("TypeScript");
 console.log(page.parse?.title);
@@ -56,7 +56,7 @@ console.log(page.parse?.text); // ページのHTMLコンテンツ
 ### ページ検索
 
 ```typescript
-import { searchPages } from "@your-username/wikipedia-jp-api";
+import { searchPages } from "@kongyo2/wikipedia-jp-api";
 
 const searchResult = await searchPages("プログラミング言語", 10);
 console.log(`検索結果: ${searchResult.query?.search?.length}件`);
@@ -69,7 +69,7 @@ searchResult.query?.search?.forEach((result) => {
 ### カテゴリ情報の取得
 
 ```typescript
-import { getCategoryMembers } from "@your-username/wikipedia-jp-api";
+import { getCategoryMembers } from "@kongyo2/wikipedia-jp-api";
 
 const members = await getCategoryMembers("プログラミング言語", 5);
 members.query?.categorymembers?.forEach((member) => {
@@ -80,7 +80,7 @@ members.query?.categorymembers?.forEach((member) => {
 ### サイト情報の取得
 
 ```typescript
-import { getSiteInfo } from "@your-username/wikipedia-jp-api";
+import { getSiteInfo } from "@kongyo2/wikipedia-jp-api";
 
 const siteInfo = await getSiteInfo();
 console.log("サイト名:", siteInfo.query?.general?.sitename);
@@ -92,7 +92,7 @@ console.log("Wiki ID:", siteInfo.query?.general?.wikiid);
 ### カスタムオプションの使用
 
 ```typescript
-import { callWikipediaApi } from "@your-username/wikipedia-jp-api";
+import { callWikipediaApi } from "@kongyo2/wikipedia-jp-api";
 
 const result = await callWikipediaApi(
   {
@@ -175,7 +175,7 @@ const result = await callWikipediaApi(
 ## エラーハンドリング
 
 ```typescript
-import { callWikipediaApi } from "@your-username/wikipedia-jp-api";
+import { callWikipediaApi } from "@kongyo2/wikipedia-jp-api";
 
 try {
   const result = await callWikipediaApi({
@@ -192,13 +192,6 @@ try {
 }
 ```
 
-## MediaWiki APIについて
-
-このライブラリはMediaWiki APIのラッパーです。詳細なAPIドキュメントについては以下を参照してください：
-
-- [MediaWiki API Documentation](https://www.mediawiki.org/wiki/API:Main_page)
-- [日本語Wikipedia APIヘルプ](https://ja.wikipedia.org/w/api.php)
-
 ## 制限事項
 
 - このライブラリは読み取り専用APIを想定しています
@@ -209,14 +202,3 @@ try {
 ## ライセンス
 
 MIT License
-
-## 貢献
-
-バグ報告や機能要望はGitHub Issuesで受け付けています。
-
-## 更新履歴
-
-### v1.0.0
-- 初回リリース
-- 基本的なMediaWiki API機能をサポート
-- TypeScriptで完全な型定義を提供
